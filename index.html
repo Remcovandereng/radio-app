@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ff7a00">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nederland FM">
+  <title>Nederland FM Mini</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div><h1>Nederland FM</h1><p id="subtitle">Mobiele radio player</p></div>
+      <button id="favBtn" class="heart">♡</button>
+    </header>
+    <section class="player-card">
+      <div class="station-art">♪</div>
+      <div class="now"><span>Nu geselecteerd</span><h2 id="stationName">Kies een zender</h2><p id="stationCountry">Nederland</p></div>
+      <div class="controls"><button id="playBtn" class="primary">▶ Afspelen</button><button id="stopBtn" class="secondary">■ Stop</button></div>
+      <label class="volume"><span>Volume</span><input id="volume" type="range" min="0" max="1" step="0.01" value="0.85"></label>
+      <p id="status" class="status">Gereed</p>
+    </section>
+    <section class="filters">
+      <input id="stationSearch" type="search" placeholder="Zoeken naar zender...">
+      <div class="country-box">
+        <button id="countryToggle" class="country-toggle">Nederland ▾</button>
+        <div id="countryPanel" class="country-panel hidden">
+          <input id="countrySearch" type="search" placeholder="Zoeken naar land...">
+          <div id="countryList" class="country-list"></div>
+        </div>
+      </div>
+      <button id="favoritesOnly" class="secondary full">♡ Favorieten bekijken</button>
+    </section>
+    <section class="list-wrap"><h3>Alle zenders</h3><div id="stationList" class="station-list"></div></section>
+    <audio id="audio" preload="none" crossorigin="anonymous"></audio>
+  </main>
+  <script src="stations.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
