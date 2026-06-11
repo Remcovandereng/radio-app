@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="nl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cache reset</title></head>
+<body style="font-family:system-ui;background:#070707;color:white;padding:24px">
+<h1>Cache reset</h1>
+<p>Oude app-cache wordt verwijderd...</p>
+<script>
+(async()=>{
+  if('serviceWorker' in navigator){
+    const regs = await navigator.serviceWorker.getRegistrations();
+    for(const reg of regs){ await reg.unregister(); }
+  }
+  if('caches' in window){
+    const keys = await caches.keys();
+    for(const key of keys){ await caches.delete(key); }
+  }
+  document.body.innerHTML += '<p>Klaar. Open nu <a style="color:#ff7a00" href="./?v=5">de v5 app</a>.</p>';
+})();
+</script>
+</body>
+</html>
