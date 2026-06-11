@@ -1,11 +1,14 @@
-# Nederland FM Mini - PWA v2
+# Nederland FM Mini - PWA v3
 
 Wijzigingen:
-- volumeregeling verwijderd voor iPhone/Android, zodat er geen verwarring is;
-- app-icoon vervangen door het aangeleverde Nederland FM-icoon;
-- Apple Touch Icon toegevoegd voor iPhone-beginscherm.
+- volume-regeling volledig verwijderd;
+- app-icoon vervangen door het aangeleverde radio-icoon;
+- cache-busting toegevoegd zodat iPhone de nieuwe bestanden pakt.
 
-Upload alle bestanden naar je GitHub-repository en vervang de oude bestanden.
+Upload alles opnieuw naar GitHub en vervang de oude bestanden.
 
-Belangrijk:
-Omdat iPhone PWA's soms cache vasthouden, verwijder eerst de oude app van je beginscherm en voeg daarna de nieuwe GitHub Pages-link opnieuw toe.
+Daarna op iPhone:
+1. verwijder de oude snelkoppeling van het beginscherm;
+2. open Safari;
+3. ga naar de site met `?v=3` achter de URL;
+4. deel > Zet op beginscherm.
