@@ -1,4 +1,4 @@
-const audio=document.getElementById("audio"),stationList=document.getElementById("stationList"),stationSearch=document.getElementById("stationSearch"),countrySearch=document.getElementById("countrySearch"),countryList=document.getElementById("countryList"),countryToggle=document.getElementById("countryToggle"),countryPanel=document.getElementById("countryPanel"),stationName=document.getElementById("stationName"),stationCountry=document.getElementById("stationCountry"),subtitle=document.getElementById("subtitle"),statusEl=document.getElementById("status"),favBtn=document.getElementById("favBtn"),favoritesOnlyBtn=document.getElementById("favoritesOnly"),volume=document.getElementById("volume");
+const audio=document.getElementById("audio"),stationList=document.getElementById("stationList"),stationSearch=document.getElementById("stationSearch"),countrySearch=document.getElementById("countrySearch"),countryList=document.getElementById("countryList"),countryToggle=document.getElementById("countryToggle"),countryPanel=document.getElementById("countryPanel"),stationName=document.getElementById("stationName"),stationCountry=document.getElementById("stationCountry"),subtitle=document.getElementById("subtitle"),statusEl=document.getElementById("status"),favBtn=document.getElementById("favBtn"),favoritesOnlyBtn=document.getElementById("favoritesOnly");
 let selectedCountry="Nederland",currentStation=null,favoritesOnly=false,favorites=JSON.parse(localStorage.getItem("favorites")||"[]");
 function countries(){return[...new Set(STATIONS.map(s=>s.country))].sort((a,b)=>a==="Nederland"?-1:b==="Nederland"?1:a.localeCompare(b,"nl"))}
 function saveFavorites(){localStorage.setItem("favorites",JSON.stringify(favorites))}
@@ -12,8 +12,7 @@ document.getElementById("playBtn").onclick=async()=>{if(!currentStation){const f
 document.getElementById("stopBtn").onclick=()=>{audio.pause();audio.currentTime=0;statusEl.textContent="Gestopt"};
 favBtn.onclick=()=>{if(!currentStation)return;if(isFav(currentStation.name)){favorites=favorites.filter(f=>f!==currentStation.name)}else{favorites.push(currentStation.name)}saveFavorites();updateFavButton();renderStations()};
 favoritesOnlyBtn.onclick=()=>{favoritesOnly=!favoritesOnly;favoritesOnlyBtn.textContent=favoritesOnly?"Alle zenders bekijken":"♡ Favorieten bekijken";renderStations()};
-volume.oninput=()=>audio.volume=Number(volume.value);
 countryToggle.onclick=()=>{countryPanel.classList.toggle("hidden");renderCountries()};
 stationSearch.oninput=renderStations;countrySearch.oninput=renderCountries;
 if("serviceWorker"in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js"))}
-audio.volume=Number(volume.value);renderCountries();renderStations();
+renderCountries();renderStations();
